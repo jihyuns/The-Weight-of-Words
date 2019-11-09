@@ -1,3 +1,13 @@
+# mac OS
+.DS_Store
+
+# About Jupyter Notebook
+CommentsEvaluation/.ipynb_checkpoints/
+.DS_Store
+
+# About VSCode
+TheWeightofWordsWebApp/.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
