@@ -13,8 +13,28 @@ body {
 }
 
 .block {
-    width: 53.15px;
+    width: 48.91px;
     height: 32.6px;
     margin: 0px;
     border: 0.1px solid black;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+    stroke-linecap: round;
+}
+
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
+    cursor: crosshair;
+}
+
+.handle {
+    fill: #fff;
+    stroke: #000;
+    stroke-opacity: 0.5;
+    stroke-width: 1.25px;
 }
