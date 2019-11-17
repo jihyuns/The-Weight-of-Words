@@ -9,7 +9,7 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
         dataSet.push(data[i]);
     }
 
-    // Drawing Graph
+    /********  Drawing Comment Graph ********/
     d3.select("#myApp")
         .selectAll(".block")
         .data(dataSet)
@@ -29,12 +29,12 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
                 hue = 10;
             }
 
-            sat = d.percent * 0.015;
+            sat = d.percent * 0.01;
 
             var oldRange = 3035;
             var newRange = 0.4;
             var oldMin = 0;
-            var newMin = 0.5
+            var newMin = 0.6;
             var _oldRange = 20;
             var _newRange = 0.1;
             var _oldMin = -20;
@@ -51,11 +51,12 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
             return d3.hsl(hue, sat, light);
         });
 
+    /********  Drawing Slider for sorting with time ********/
     var svg = d3.select("#slider")
-                    .style("height", window.innerHeight);
-                    // .style("background-color", 'red');
+                    .style("height", window.innerHeight)
+                    .style("background-color", 'red');
 
-    var margin = {right: 0.5, left: 7};
+    var margin = {right: 0, left: 7};
 
     var y = d3.scaleLinear()
                 .domain([0, 100])
@@ -86,4 +87,7 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
     function timeArrange(t) {
         handle.attr("cy", y(t));
     }
+
+    /********  Button for move the writing page ********/
+    var button = d3.select(".button");
 })
