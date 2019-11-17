@@ -7,7 +7,16 @@
         <link rel="stylesheet" href="CSS/comments.css">
     </head>
     <body>
-        <div id="myApp-Comments"></div>
+        <div class="slider">
+            <svg width="100%" height="100%"></svg>
+        </div>
+        <div class="commentBox">
+            <label for="comment">당신의 생각을 남겨주세요.</label>
+            <input type="text" id="comment" style="height: 70px;" />
+        </div>
+        <div class="commentEnter">
+            <input type="button" onclick='input_Comments()' value="입력" />
+        </div>
         <script src="JS/comments.js" type="text/javascript"></script>
     </body>
 </html>
