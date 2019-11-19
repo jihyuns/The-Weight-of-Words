@@ -37,19 +37,19 @@ def percentage_pos_neg(review):
     score = float(model.predict(data))
 
     if(score > 0.5):
-        result = {'result': '1', 'score': round(score*100, 2)}
+        result = {"result": "1", "score": round(score*100, 2)}
         return result
     else:
-        result = {'result': '0', 'score': round((1-score)*100, 2)}
+        result = {"result": "0", "score": round((1-score)*100, 2)}
         return result
 
 @app.route("/estimator", methods=['GET', 'POST'])
 def estimator():
     content = request.json
     with graph.as_default():
-        a = percentage_pos_neg(content['comments'])
-        result = {'result': a}
+        res = percentage_pos_neg(content['comments'])
+        result = res
         return jsonify(result)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3000, threaded=True)
+    app.run('0.0.0.0', port=8000, threaded=True)
