@@ -92,6 +92,21 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
     var button = d3.select(".button");
 })
 
-$(window).on('load resize', function() {
-    $('#div').width($(this).width());
-})
+function addData() {
+    var tmp = location.href.split("?");
+    var tmp_ = tmp[1];
+
+    var data = unescape(tmp_)
+    
+    console.log(data);
+
+    var data = "<div class='block' id='1' li='" + data + "'></div>";
+
+    $('#myApp').append(data);
+}
+
+addData();
+
+// $(window).on('load resize', function() {
+//     $('#div').width($(this).width());
+// })

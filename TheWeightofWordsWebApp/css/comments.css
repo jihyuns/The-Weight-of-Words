@@ -141,3 +141,12 @@ input[type=button]:hover{
 span #percent {
     font-size: 25px;
 }
+
+iframe {
+    /* display: block; */
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    margin: auto;
+    padding: 10px;
+  }
