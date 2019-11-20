@@ -1,32 +1,105 @@
-.slider {
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#myApp1 {
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 100%;
+    height: 100%;
+}
+
+.sliderBox {
+    position: fixed;
+    top: 35%;
+    left: 20%;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: 10px;
+}
+
+.track-inset {
+    stroke: #ddd;
+    stroke-width: 8px;
+}
+  
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
+    cursor: crosshair;
+}
+
+.commentContainer {
     position: relative;
     top: 45%;
     left: 20%;
-    width: 700px;
+    width: 800px;
     height: 10%;
-    margin: 5px;
-    background-color: crimson;
+    background-color: cyan;
+}
+
+.resultContainer {
+    position: relative;
+    width: 800px;
+    height: 10%;
+    top: 46%;
+    left: 20%;
 }
 
 .commentBox {
-    position: relative;
-    top: 45%;
-    left: 20%;  
-    width: 700px; 
-    margin: 5px;
+    /* display: inline; */
+    width: 730px;
+    height: 100%;
+    background-color: blue;
 }
 
 .commentEnter {
-    position: relative;
-    top: 35.75%;
-    left: 69.5%;
     width: 70px;
-    /* background-color: rebeccapurple; */
+    height: 100%;
+    /* background-color: darkcyan; */
+}
+
+.discription {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    width: 50%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    width: 50%;
+    text-align: center;
 }
 
 .commentBox label {
     position: absolute;
-    top: 10px;  /* input 요소의 border-top 설정값 만큼 */
+    top: 15px;  /* input 요소의 border-top 설정값 만큼 */
     bottom: 1px;
     left: 240px;  /* input 요소의 border-left 설정값 만큼 */
     padding: .8em .5em;  /* input 요소의 padding 값 만큼 */
@@ -37,11 +110,11 @@
 
 .commentBox input[type="text"] {
     width: 100%;  /* 원하는 너비 설정 */ 
-    height: 20px;  /* 높이값 초기화 */
+    height: 100%;  /* 높이값 초기화 */
     line-height : 20px;  /* line-height 초기화 */
     padding: .10em .5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
     font-size: 20;
-    /* border: 1px solid #999; */
+    border: 1px solid #999;
     border-radius: 0;  /* iSO 둥근모서리 제거 */
     outline-style: none;  /* 포커스시 발생하는 효과 제거를 원한다면 */
     -webkit-appearance: none;  /* 브라우저별 기본 스타일링 제거 */
@@ -51,7 +124,7 @@
 
 .commentEnter input[type="button"] {
     width: 100%;  
-    height: 8.7%;
+    height: 100%;
     background-color: tomato; 
     border: none;
     font-size: 1em;
@@ -63,4 +136,8 @@
 
 input[type=button]:hover{
     background-color: blueviolet;
+}
+
+span #percent {
+    font-size: 25px;
 }

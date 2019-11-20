@@ -91,3 +91,7 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
     /********  Button for move the writing page ********/
     var button = d3.select(".button");
 })
+
+$(window).on('load resize', function() {
+    $('#div').width($(this).width());
+})
