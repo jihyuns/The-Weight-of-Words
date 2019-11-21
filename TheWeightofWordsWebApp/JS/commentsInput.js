@@ -13,6 +13,9 @@ var x = d3.scaleLinear()
             .range([0, width])
             .clamp(true);
 
+console.log(x.range()[0])
+console.log(x.range()[1])
+
 var slider = svg.append("g")
                 .attr("class", "slider")
                 .attr("transform", "translate(" + margin.left + "," + height/2 + ")");
@@ -99,7 +102,7 @@ function input_Comments() {
 
             // 3초 뒤에 댓글 화면으로 이동
             setTimeout(function() {
-                location.href = "index.html?" + escape(comment);
+                location.href = "index.html?" + escape(comment);    // escape(): 한글깨짐방지
             }, 3000);
         },
         error: function() {

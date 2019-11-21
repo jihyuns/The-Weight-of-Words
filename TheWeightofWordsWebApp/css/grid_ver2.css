@@ -33,50 +33,52 @@ img:hover {
     cursor: pointer;
 }
 
-[comment-Txt]:hover {
-    position: relative;
-}
-
-[comment-Txt]:after {
-    -webkit-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
-    -moz-transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
-    transition: bottom .3s ease-in-out, opacity .3s ease-in-out;
-
-    background-color: rgba(0, 0, 0, 0.8);
-
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-    box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-
-    color: #FFFFFF;
-    font-size: 12px;
-    text-align: center;
-    margin-bottom: 10px;
-    padding: 7px 12px;
+#popupLayer {
     position: absolute;
-    width: auto;
-    min-width: 100px;
-    max-width: 500px;
-    word-wrap: break-word;
-
-    z-index: 9999;
-
-    opacity: 0;
-    left: -9999px;
-    top: 90%;
-	
-	content: attr(comment-Txt);
+    /* display: none; */
+    background-color: #ffffff;
+    border: solid 2px #d0d0d0;
+    /* top: 10px;  */
+    width: 50px; 
+    height: 50px; 
+    padding: 10px;
 }
 
-[comment-Txt]:hover:after {
-	top: 130%;
-	left: 0;
-	opacity: 1;
-}
+/* The actural popup */
+/* .block .popupTxt {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+} */
+
+/* Popup arrow */
+/* .block .popupTxt::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+} */
+
+
+/* Toggle this class - hid and show the popup */
+/* .block .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+} */
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
@@ -88,6 +90,7 @@ img:hover {
     from {opacity: 0;}
     to {opacity:1 ;}
 }
+
 
 /* Slider */
 .track,

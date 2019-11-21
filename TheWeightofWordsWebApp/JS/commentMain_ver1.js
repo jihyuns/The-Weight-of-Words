@@ -52,25 +52,30 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
         });
 
     /********  Drawing Slider for sorting with time ********/
-    var svg = d3.select("#slider")
-                    .style("height", window.innerHeight)
+    var div = d3.select("#slider")
+                    // .style("height", window.innerHeight)
                     .style("background-color", 'red');
 
-    var margin = {right: 0, left: 7};
+    var svg = d3.select("svg"),
+        margin = {right: 0, left: 8},
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
 
     var y = d3.scaleLinear()
                 .domain([0, 100])
                 .range([0, window.innerHeight])
                 .clamp(true);
 
-    var slider = svg.select("svg")
-            .append("g")
+    console.log(y.range()[0]);
+    console.log(y.range()[1]);
+
+    var slider = svg.append("g")
             .attr("class", "slider_")
-            .attr("transform", "translate(" + margin.left + "," + height/2 + ")");
+            .attr("transform", "translate(" + margin.left + "," + 10 + ")");
 
     slider.append("line")
             .attr("class", "track")
-            .attr("y1", '0')
+            .attr("y1", y.range()[0])
             .attr("y2", y.range()[1])
             .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
             .attr("class", "track-inset")
@@ -87,15 +92,13 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
     function timeArrange(t) {
         handle.attr("cy", y(t));
     }
-
-    /********  Button for move the writing page ********/
-    var button = d3.select(".button");
 })
 
 function addData() {
     var tmp = location.href.split("?");
     var tmp_ = tmp[1];
 
+    // 한글 깨짐 방지
     var data = unescape(tmp_)
     
     console.log(data);
@@ -105,8 +108,4 @@ function addData() {
     $('#myApp').append(data);
 }
 
-addData();
-
-// $(window).on('load resize', function() {
-//     $('#div').width($(this).width());
-// })
+// addData();
