@@ -1,7 +1,9 @@
+/******** With Popup code ********/
+
 var hue, sat, light;
 
 // CSV data set
-d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, data) {
+d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error, data) {
     var click = 0;
     var dataSet = [];
     for(var i=0; i<data.length-82+29+29+2; i++) {

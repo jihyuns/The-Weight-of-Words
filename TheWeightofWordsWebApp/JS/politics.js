@@ -1,15 +1,15 @@
 var hue, sat, light;
 
 // CSV data set
-d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, data) {
+d3.csv("../data/sortingData/comments_Politics_sorting.csv", function(error, data) {
     var click = 0;
     var dataSet = [];
-    for(var i=0; i<data.length-82+29+29+2; i++) {
+    for(var i=0; i<data.length; i++) {
         dataSet.push(data[i]);
     }
 
     /********  Drawing Comment Graph ********/
-    var grid = d3.select("#myApp")
+    var grid = d3.select("#politicsApp")
         .selectAll(".block")
         .data(dataSet)
         .enter()
@@ -22,13 +22,18 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
             return d.comments;
         })
         .style("background-color", function(d) {
+            
             if(d.predict == 1) {
-                hue = 250;
-            } else {
-                hue = 10;
+                // hue값 범위 100 ~ 200
+                hue = Math.floor(d.percent) + 100;
+                sat = Math.floor(d.percent) * 0.01;
+                // console.log(hue);
+            } else if(d.predict == 0) {
+                console.log(d.percent);
+                // hue값 범위 0 ~ 100
+                hue = Math.floor(d.percent);
+                sat = Math.floor(d.percent) * 0.01;
             }
-
-            sat = d.percent * 0.01;
 
             var oldRange = 3035;
             var newRange = 0.4;
@@ -65,9 +70,6 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
                 .range([0, window.innerHeight])
                 .clamp(true);
 
-    console.log(y.range()[0]);
-    console.log(y.range()[1]);
-
     var slider = svg.append("g")
             .attr("class", "slider_")
             .attr("transform", "translate(" + margin.left + "," + 10 + ")");
@@ -91,20 +93,24 @@ d3.csv("data/sortingData/comments_Entertainment_sorting.csv", function(error, da
     function timeArrange(t) {
         handle.attr("cy", y(t));
     }
+
 })
 
 function addData() {
+
     var tmp = location.href.split("?");
-    var tmp_ = tmp[1];
+    var tmp_ = tmp[1].split(":");
+    var sig = tmp_[0];
+    var cmt = unescape(tmp_[1]);    // 한글 깨짐 방지
 
-    // 한글 깨짐 방지
-    var data = unescape(tmp_)
-    
-    console.log(data);
+    var data = "<div class='block' id='1' comment-Txt='" + cmt + "'></div>";
 
-    var data = "<div class='block' id='1' comment-Txt='" + data + "'></div>";
-
-    $('#myApp').append(data);
+    if(sig == 'true') {
+        console.log('test success');
+        $('#politicsApp').append(data);
+    } else {
+        console.log('you need to add a comment!')
+    }
 }
 
 addData();

@@ -41,7 +41,6 @@ body {
     pointer-events: stroke;
     stroke-width: 50px;
     stroke: transparent;
-    cursor: crosshair;
 }
 
 .commentContainer {
@@ -149,4 +148,4 @@ iframe {
     left: 45%;
     margin: auto;
     padding: 10px;
-  }
+}

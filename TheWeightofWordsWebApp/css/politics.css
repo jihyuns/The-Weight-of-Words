@@ -19,16 +19,15 @@ img:hover {
     opacity: 100%;
 }
 
-#myApp {
-    position: relative;
+#politicsApp {
     display: flex;
     flex-wrap: wrap;
 }
 
 .block {
-    width: 48.91px;
-    height: 32.6px;
-    margin: 0px;
+    box-sizing: border-box;
+    width: 43.65px;
+    height: 20.6px;
     border: 0.1px solid black;
     cursor: pointer;
 }

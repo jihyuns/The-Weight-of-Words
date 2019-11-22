@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>The Weight of Words</title>
+        <script src="//d3js.org/d3.v4.min.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div id="myApp"></div>
+        <div id="popupLayer_1" style="overflow: scroll;">
+            <div id="comment">
+                <span style="cursor:pointer;" onclick="location.href='html/enter.html'">
+                    전체댓글보기
+                </span>
+            </div>
+            <div id="close">
+                <span onClick="closeLayer(this)" style="text-align: left; cursor:pointer; font-size:1em" title="닫기">X</span>
+            </div>
+            <div id="title">
+                <span style="text-decoration: underline; cursor:pointer;" onclick="location.href='https://entertain.naver.com/ranking/read?oid=477&aid=0000212713'">
+                    구혜선, '안재현 분풀이' 끝나고 활발한 소통…이틀 동안 8개 게시물[종합]
+                </span>
+            </div>
+            <div id="img">
+                <img src="https://mimgnews.pstatic.net/image/477/2019/10/14/0000212713_001_20191014102421899.jpg?type=w540" width="100%" height="100%" />
+            </div>
+        </div>
+        <div id="popupLayer_2" style="overflow: scroll;">
+            <div id="comment">
+                <span style="cursor:pointer;" onclick="location.href='html/politics.html'">
+                    전체댓글보기
+                </span>
+            </div>
+            <div id="close">
+                <span id="x" onClick="closeLayer(this)" style="text-align: left; cursor:pointer; font-size:1em" title="닫기">X</span>
+            </div>
+            <div id="title" style="text-decoration: underline; cursor:pointer;" onclick="location.href='https://news.naver.com/main/ranking/read.nhn?rankingType=popular_day&oid=025&aid=0002948214&date=20191028&type=2&rankingSectionId=100&rankingSeq=2'">
+                이낙연 "총리직, 오래 있어도 흉하고 멋대로 할 수도 없다"
+            </div>
+            <div id="img">
+                <img src="https://imgnews.pstatic.net/image/025/2019/10/28/0002948214_001_20191028225957891.jpg?type=w647" width="100%" height="100%" />
+            </div>
+        </div>
+        <div id="popupLayer_3" style="overflow: scroll;">
+            <div id="comment">
+                <span style="cursor:pointer;" onclick="location.href='html/socials.html'">
+                    전체댓글보기
+                </span>
+            </div>
+            <div id="close">
+                <span onClick="closeLayer(this)" style="text-align: left; cursor:pointer; font-size:1em" title="닫기">X</span>
+            </div>
+            <div id="title" style="text-decoration: underline; cursor:pointer;" onclick="location.href='https://news.naver.com/main/ranking/read.nhn?rankingType=popular_day&oid=025&aid=0002944506&date=20191014&type=1&rankingSectionId=102&rankingSeq=1'">
+                서울·광주·대구만 특수부 남긴다···"조국 고향 부산 왜 빠졌나"
+            </div>
+            <div id="img">
+                <img src="https://imgnews.pstatic.net/image/025/2019/10/14/0002944506_001_20191014131634385.jpg?type=w647" width="100%" height="100%" />
+            </div>
+        </div>
+        <script src="JS/main.js" type="text/javascript" pageEncoding="UTF-8"></script>
+    </body>
+</html>

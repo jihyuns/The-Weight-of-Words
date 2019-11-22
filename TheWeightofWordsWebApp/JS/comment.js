@@ -13,9 +13,6 @@ var x = d3.scaleLinear()
             .range([0, width])
             .clamp(true);
 
-console.log(x.range()[0])
-console.log(x.range()[1])
-
 var slider = svg.append("g")
                 .attr("class", "slider")
                 .attr("transform", "translate(" + margin.left + "," + height/2 + ")");
@@ -27,10 +24,13 @@ slider.append("line")
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
         .attr("class", "track-inset")
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-        .attr("class", "track-overlay")
-        .call(d3.drag()
-            .on("start.interrupt", function() { slider.interrupt(); })
-            .on("start drag", function() { hue(x.invert(d3.event.x)); }));
+        .attr("class", "track-overlay");
+        // .call(d3.drag()
+        //     .on("start.interrupt", function() { slider.interrupt(); })
+        //     .on("start drag", function() { 
+        //         console.log(x.invert(d3.event.x));
+        //         hue(x.invert(d3.event.x)); 
+        //     }));
 
 slider.insert("g", ".track-overlay")
         .attr("class", "ticks")
@@ -46,16 +46,10 @@ var handle = slider.insert("circle", ".track-overlay")
                     .attr("class", "handle")
                     .attr("r", 5);
 
-// slider.transition() // Gratuitous intro!
-//     .duration(750)
-//     .tween("hue", function() {
-//         var i = d3.interpolate(0, 70);
-//         return function(t) { hue(i(t)); };
-//     });
-
-function hue(h) {
+function hue(h, h_) {
     handle.attr("cx", x(h));
-    div.style("background-color", d3.hsl(h, 0.8, 0.8));
+    // div.style("background-color", d3.rgb(h, 0, 100-h, 0.5));
+    div.style("background-color", d3.hsl(h_, h*0.01, 0.75));
 }
 
 
@@ -75,6 +69,9 @@ $(document).ready(function() {
     });
 });
 
+var referrer = document.referrer;
+console.log(referrer);
+
 function input_Comments() {
     LoadingWithMask()
 
@@ -87,6 +84,11 @@ function input_Comments() {
         contentType: "application/json",
         success: function(data) {
             console.log(comment);
+            if(data.result == 1) {
+                LoadingBgdColor(data.score, 200);
+            } else {
+                LoadingBgdColor(data.score, 0);
+            }
             closeLoadingWithMask();
 
             document.getElementsByClassName("discription")[0].style.visibility = 'hidden';
@@ -102,13 +104,22 @@ function input_Comments() {
 
             // 3초 뒤에 댓글 화면으로 이동
             setTimeout(function() {
-                location.href = "index.html?" + escape(comment);    // escape(): 한글깨짐방지
+                location.href = referrer + '?' + 'true' + ':' + escape(comment);    // escape(): 한글깨짐방지
             }, 3000);
         },
         error: function() {
             console.log("에러 발생");
         }
     })
+}
+
+function LoadingBgdColor(n, h_) {
+    slider.transition() // Gratuitous intro!
+    .duration(750)
+    .tween("hue", function() {
+        var i = d3.interpolate(0, n);
+        return function(t) { hue(i(t), h_); };
+    });
 }
 
 function LoadingWithMask() {

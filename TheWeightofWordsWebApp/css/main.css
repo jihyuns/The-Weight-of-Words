@@ -1,0 +1,113 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#myApp {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#myApp .block {
+    box-sizing: border-box;
+}
+
+/* 뉴스기사 팝업창 */
+#popupLayer_1, #popupLayer_2, #popupLayer_3 {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 250px; 
+    height: 150px; 
+    padding: 10px;
+    display: none;
+}
+
+/* 뉴스기사 팝업창: 닫기 */
+#popupLayer_1 #close {
+    position: relative;
+    left: 98%;
+    display: flex;
+    width: 5%;
+    text-align: left;
+}
+
+#popupLayer_2 #close {
+    position: relative;
+    left: 98%;
+    display: flex;
+    width: 5%;
+    text-align: left;
+}
+
+#popupLayer_3 #close {
+    position: relative;
+    left: 98%;
+    display: flex;
+    width: 5%;
+    text-align: left;
+}
+
+#close span {
+    color: #999;
+}
+
+
+/* 뉴스기사 팝업창: 댓글보기 */
+#popupLayer_1 #comment{
+    position: absolute;
+    display: flex;
+    width: 50%;
+    text-align: left;
+}
+
+#popupLayer_2 #comment{
+    position: absolute;
+    display: flex;
+    width: 50%;
+    text-align: left;
+}
+
+#popupLayer_3 #comment{
+    position: absolute;
+    display: flex;
+    width: 50%;
+    text-align: left;
+}
+
+#comment span {
+    background-color: deepskyblue;
+}
+
+/* 뉴스기사 팝업창: 뉴스기사 제목 */
+#popupLayer_1 #title {
+    padding: 0px 0px 5px 0px;
+    position: relative;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+#popupLayer_2 #title {
+    position: relative;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+#popupLayer_3 #title {
+    position: relative;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
