@@ -5,7 +5,7 @@ console.log(window.innerWidth);
 
 
 // CSV data set
-d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error, data) {
+d3.csv("../data/sortingData/comments_Entertainment(sort).csv", function(error, data) {
     var click = 0;
     var dataSet = [];
     for(var i=0; i<data.length; i++) {
@@ -23,10 +23,15 @@ d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error,
         .attr("id", function(d) {
             return d.index;
         })
+        .attr("blink", function(d) {
+            if(d.index == 387 || d.index==500 || d.index==589) {
+                return d.wholelike;
+            }
+        })
         .style("width", window.innerWidth/36)
         .style("height", window.innerHeight/20)
         .style("border", function(d) {
-            if(d.index == 387 || d.index==500 || d.index==131) {
+            if(d.index == 387 || d.index==500 || d.index==589) {
                 return '3px solid yellow';
             } 
             else {
@@ -34,27 +39,32 @@ d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error,
             }
         })
         .style("cursor", function(d) {
-            if(d.index == 387 || d.index==500 || d.index==131) {
+            if(d.index == 387 || d.index==500 || d.index==589) {
                 return 'pointer';
             }
         })
         .style("background-color", function(d) {
+            
             if(d.predict == 1) {
-                hue = 250;
-            } else {
-                hue = 10;
+                // hue값 범위 100 ~ 200
+                hue = Math.floor(d.percent) + 100;
+                // console.log(hue);
+            } else if(d.predict == 0) {
+                console.log(d.percent);
+                // hue값 범위 0 ~ 100
+                hue = 100 - Math.floor(d.percent);
             }
 
-            sat = d.percent * 0.02;
+            sat = Math.floor(d.percent) * 0.01;
 
             var oldRange = 3035;
-            var newRange = 0.4;
+            var newRange = 0.5;
             var oldMin = 0;
             var newMin = 0.6;
             var _oldRange = 20;
-            var _newRange = 0.1;
+            var _newRange = 0.15;
             var _oldMin = -20;
-            var _newMin = 0.35;
+            var _newMin = 0.3;
 
             if(d.truelike > 0) {
                 // light값 범위 0.5 ~ 1
@@ -67,7 +77,7 @@ d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error,
             return d3.hsl(hue, sat, light);
         });
 
-    $('#131').click(function(e) {
+    $('#500').click(function(e) {
 
         var sWidth = window.innerWidth;
         var sHeight = window.innerHeight;
@@ -121,7 +131,7 @@ d3.csv("../data/sortingData/comments_Entertainment_sorting.csv", function(error,
         }).show();
     });
 
-    $('#500').click(function(e) {
+    $('#589').click(function(e) {
 
         var sWidth = window.innerWidth;
         var sHeight = window.innerHeight;

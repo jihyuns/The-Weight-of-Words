@@ -12,47 +12,35 @@ body {
     flex-wrap: wrap; */
     width: 100%;
     height: 100%;
-    background-color: cornsilk;
 }
 
-.alert {
-    position: absolute;
-    /* background-color: teal; */
-    width: 70px;
-    height: 10%;
-    top: 32.5%;
-    right: 35%;
+.sliderBox {
+    position: fixed;
+    top: 35%;
+    left: 20%;
 }
 
-.alert_ {
-    position: absolute;
-    /* background-color: teal; */
-    width: 70px;
-    height: 10%;
-    top: 32.5%;
-    left: 37%;
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
 }
 
-#sirenAnim, #sirenAnim_ {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
+.track {
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: 10px;
 }
 
-#sirenImg, #sirenImg_ {
-    position: absolute;
-    width: 67%;
-    height: 70%;
-    left: 18%;
-    top: 23%;
-    visibility: hidden;
+.track-inset {
+    stroke: #ddd;
+    stroke-width: 8px;
 }
-
-#load {
-    position: absolute;
-    top: 40%;
-    left: 45%;
+  
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
 }
 
 .commentContainer {
@@ -147,4 +135,17 @@ body {
 
 input[type=button]:hover{
     background-color: blueviolet;
+}
+
+span #percent {
+    font-size: 25px;
+}
+
+iframe {
+    /* display: block; */
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    margin: auto;
+    padding: 10px;
 }

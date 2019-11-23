@@ -101,6 +101,17 @@ body {
     font-weight: bolder;
 }
 
+[blink] {
+    -webkit-animation: blink 2.5s linear infinite;
+}
+
+@-webkit-keyframes blink {
+    0% { border: 3px solid yellow; }
+    33% { border: 0.1px solid black; }
+    66% { border: 3px solid yellow; }
+    100% { border: 0.1px solid black; }
+}
+
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
     from {opacity: 0;} 

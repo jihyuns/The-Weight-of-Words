@@ -1,7 +1,7 @@
 var hue, sat, light;
 
 // CSV data set
-d3.csv("../data/sortingData/comments_Social_sorting.csv", function(error, data) {
+d3.csv("../data/sortingData/comments_Social(sort).csv", function(error, data) {
     var click = 0;
     var dataSet = [];
     for(var i=0; i<data.length; i++) {
@@ -19,30 +19,43 @@ d3.csv("../data/sortingData/comments_Social_sorting.csv", function(error, data) 
             return d.index;
         })
         .attr("comment-Txt", function(d) {
-            return d.comments;
+            if(d.predict == 1 || d.percent <= 80 || d.truelike >= 0) {
+                return d.comments;
+            }
         })
+        .attr("comment-Txt-1", function(d) {
+            if(d.predict==0 && d.percent > 80 && d.truelike < 0) {
+                return d.comments;
+            }
+        })
+        .attr("blink", function(d) {
+            if(d.wholelike > 1000 && d.truelike > 100) {
+                return d.wholelike;
+            }
+        })
+        .style("border", "0.1px solid black")
         .style("background-color", function(d) {
             
             if(d.predict == 1) {
                 // hue값 범위 100 ~ 200
                 hue = Math.floor(d.percent) + 100;
-                sat = Math.floor(d.percent) * 0.01;
                 // console.log(hue);
             } else if(d.predict == 0) {
                 console.log(d.percent);
                 // hue값 범위 0 ~ 100
-                hue = Math.floor(d.percent);
-                sat = Math.floor(d.percent) * 0.01;
+                hue = 100 - Math.floor(d.percent);
             }
 
+            sat = Math.floor(d.percent) * 0.01;
+
             var oldRange = 3035;
-            var newRange = 0.4;
+            var newRange = 0.5;
             var oldMin = 0;
             var newMin = 0.6;
             var _oldRange = 20;
-            var _newRange = 0.1;
+            var _newRange = 0.15;
             var _oldMin = -20;
-            var _newMin = 0.35;
+            var _newMin = 0.3;
 
             if(d.truelike > 0) {
                 // light값 범위 0.5 ~ 1
@@ -97,20 +110,26 @@ d3.csv("../data/sortingData/comments_Social_sorting.csv", function(error, data) 
 })
 
 function addData() {
+    var data;
 
     var tmp = location.href.split("?");
     var tmp_ = tmp[1].split(":");
-    var sig = tmp_[0];
-    var cmt = unescape(tmp_[1]);    // 한글 깨짐 방지
+    var pre = tmp_[0];
 
-    var data = "<div class='block' id='1' comment-Txt='" + cmt + "'></div>";
+    var tmp_1 = tmp_[1].split(",");
+    var per = tmp_1[0];
+    var cmt = unescape(tmp_1[1]);    // 한글 깨짐 방지
 
-    if(sig == 'true') {
-        console.log('test success');
-        $('#socialsApp').append(data);
+    if(pre == 0) {
+
+        data = "<div class='block' id='new' comment-Txt='" + cmt + "'\
+            style='border: 0.1px solid black; background-color: " + d3.hsl(100 - (Math.floor(per)), Math.floor(per)*0.01, 0.5) + ";'></div>";
     } else {
-        console.log('you need to add a comment!')
+        data = "<div class='block' id='new' comment-Txt='" + cmt + "'\
+                style='border: 0.1px solid black; background-color: " + d3.hsl(100 - (Math.floor(per)), Math.floor(per)*0.01, 0.5) + ";'></div>";
     }
+
+    $('#socialsApp').append(data);
 }
 
 addData();
