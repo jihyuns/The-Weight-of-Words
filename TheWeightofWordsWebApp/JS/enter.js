@@ -19,12 +19,12 @@ d3.csv("../data/sortingData/comments_Entertainment(sort).csv", function(error, d
         })
         .attr("class", "block")
         .attr("comment-Txt", function(d) {
-            if(d.predict == 1 || d.percent <= 80 || d.truelike >= 0) {
+            if(d.predict == 1 || d.percent <= 50 || d.truelike >= 0) {
                 return d.comments;
             }
         })
         .attr("comment-Txt-1", function(d) {
-            if(d.predict==0 && d.percent > 80 && d.truelike < 0) {
+            if(d.predict==0 && d.percent > 50 && d.truelike < 0) {
                 return d.comments;
             }
         })
@@ -129,7 +129,7 @@ function addData() {
             style='border: 0.1px solid black; background-color: " + d3.hsl(100 - (Math.floor(per)), Math.floor(per)*0.01, 0.5) + ";'></div>";
     } else {
         data = "<div class='block' id='new' comment-Txt='" + cmt + "'\
-                style='border: 0.1px solid black; background-color: " + d3.hsl(100 - (Math.floor(per)), Math.floor(per)*0.01, 0.5) + ";'></div>";
+                style='border: 0.1px solid black; background-color: " + d3.hsl(100 + (Math.floor(per)), Math.floor(per)*0.01, 0.5) + ";'></div>";
     }
 
     $('#enterApp').append(data);

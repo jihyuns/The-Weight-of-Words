@@ -31,7 +31,7 @@ $('#comments').keyup(function() {
             data: JSON.stringify({'comments': comment}),
             contentType: "application/json",
             success: function(data) {
-                if(data.result == 0 && data.score > 50 && data.score <= 70) {
+                if(data.result == 0 && data.score > 60 && data.score <= 80) {
                     document.getElementById('sirenImg').style.visibility = 'visible';
                     document.getElementById('sirenImg_').style.visibility = 'visible';
                 } else {
@@ -39,13 +39,15 @@ $('#comments').keyup(function() {
                     document.getElementById('sirenImg_').style.visibility = 'hidden';
                 }
 
-                if(data.result == 0 && data.score > 70) {
+                if(data.result == 0 && data.score > 80) {
                     document.getElementById('sirenAnim').style.visibility = 'visible';
                     document.getElementById('sirenAnim_').style.visibility = 'visible';
                 } else {
                     document.getElementById('sirenAnim').style.visibility = 'hidden';
                     document.getElementById('sirenAnim_').style.visibility = 'hidden';
                 }
+
+                console.log(data);
             },
             error: function() {
                 console.log("에러 발생");

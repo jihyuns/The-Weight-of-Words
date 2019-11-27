@@ -3,9 +3,8 @@ var hue, sat, light;
 a = document.getElementById("myApp").style.width
 console.log(window.innerWidth);
 
-
 // CSV data set
-d3.csv("../data/sortingData/comments_Entertainment(sort).csv", function(error, data) {
+d3.csv("./data/sortingData/comments_Entertainment(sort).csv", function(error, data) {
     var click = 0;
     var dataSet = [];
     for(var i=0; i<data.length; i++) {
